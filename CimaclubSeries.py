@@ -27,7 +27,7 @@ def next_epo(link):
 def last_links(mid):
     x = 0
     for li in mid:
-        req = get(li).text
+        req = get(li,headers={'referer':li}).text
         soup = BeautifulSoup(req, "lxml")
         # Quality Change -->(5)<--   [6 for 720]  [5 for 480]  [4 for 360]
         page = soup.find('a', attrs={'onclick': compile(".*( 5.* ).*")}).get('href')
